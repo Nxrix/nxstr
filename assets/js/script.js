@@ -549,6 +549,7 @@ const connect = () => {
   socket.addEventListener("close", async (e) => {
     connected = false;
     console.log("Disconnected.");
+    document.body.innerHTML = "Disconnected.";
   });
 
   socket.addEventListener("open", async (e) => {
