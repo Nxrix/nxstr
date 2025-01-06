@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="./assets/">
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/style.css?{{site.time|date:'%s%N'}}">
   <script src="./js/buffer.js"></script>
   <script src="./js/bitcoinjs-lib.js"></script>
   <script src="./js/noble-secp256k1.js"></script>
@@ -84,6 +84,6 @@
     </div>
   </div>
 </div>
-<script src="./js/script.js"></script>
+<script src="./js/script.js?{{site.time|date:'%s%N'}}"></script>
 </body>
 </html>
