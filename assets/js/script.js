@@ -152,6 +152,9 @@ send_message.onclick = () => {
 //----//
 
 const user = JSON.parse(localStorage.getItem("Nxstr.user"))||{};
+if (!user.contacts) {
+  user.contacts = [];
+}
 const kind0s = {};
 const last4s = {};
 let messages = [];
@@ -179,6 +182,7 @@ const disload_elements_fix = () => {
   make_key.style.display = "block";
   localStorage.setItem("Nxstr.user",JSON.stringify(user));
   document.querySelector(".pk_info").style.display = "none";
+  profile_settings.style.display = "none";
 }
 
 input_sk.addEventListener("focus",() => {
@@ -473,6 +477,10 @@ exit_chat.onclick = () => {
   set_tab(1);
 }
 
+update_k0.onclick = () => {
+  setk0(input_name.value.trim(),input_about.value.trim(),input_picture.value.trim());
+}
+
 const connect = () => {
   if (socket) socket.close();
   socket = new WebSocket("wss://nos.lol");
@@ -485,6 +493,13 @@ const connect = () => {
            if (kind == 0) {
 
       kind0s[pubkey] = content;
+      if (pubkey==user.pk) {
+        const data = JSON.parse(content);
+        input_name.value = data.name;
+        input_about.value = data.about;
+        input_picture.value = data.picture;
+        profile_settings.style.display = "block";
+      }
       contacts_update();
 
     } else if (kind == 1) {
@@ -540,7 +555,7 @@ const connect = () => {
     connected = true;
     console.log("Connected.");
     if (!user.contacts[user.pk]) {
-      reqk0(user.contacts[i]);
+      reqk0(user.pk);
     }
     for (let i=0;i<user.contacts.length;i++) {
       reqk0(user.contacts[i]);
