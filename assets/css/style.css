@@ -93,7 +93,7 @@ a:hover {
   -webkit-optimize-contrast: off;
 }
 hr {
-  background: var(--border);
+  background-color: var(--border);
   width: 90%;
   height: 2px;
   border-radius: 1px;
@@ -258,7 +258,7 @@ hr {
   margin: 8px 42.5%;
 }
 
-#input_sk, #input_pk {
+#input_sk, #input_pk, #input_name, #input_about, #input_picture {
   background-color: var(--background);
   width: 100%;
   height: calc(1em + 32px);
@@ -317,6 +317,29 @@ hr {
   transform: scale(0.875);
 }
 
+#profile_settings {
+  display: none;
+}
+
+#update_k0 {
+  background-color: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
+  margin: 16px auto 0 auto;
+  font-size: 1em;
+  line-height: 1;
+  box-shadow: 0 0 0 1px var(--border);
+  border-radius: 8px;
+  transition: transform 0.125s ease;
+  cursor: pointer;
+}
+#update_k0:active {
+  transform: scale(0.875);
+}
+
 #btn_logout {
   color: var(--red);
   display: flex;
@@ -329,7 +352,11 @@ hr {
   line-height: 1;
   box-shadow: 0 0 0 1px var(--red);
   border-radius: 8px;
+  transition: transform 0.125s ease;
   cursor: pointer;
+}
+#btn_logout:active {
+  transform: scale(0.875);
 }
 
 /* Tab 4 */
