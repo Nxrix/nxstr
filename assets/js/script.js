@@ -278,7 +278,7 @@ const contacts_update = () => {
 
       if (kind0s[user.contacts[i]]) {
         const data = JSON.parse(kind0s[user.contacts[i]]);
-        name.innerText = (user.contacts[i]==user.pk?"Myself":(data.name||user.contacts[i]));
+        name.innerText = data.name||user.contacts[i];
         picture_img.src = data.picture||"./svg/face.png";
       }
 
