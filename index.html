@@ -1,0 +1,80 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="./assets/">
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/buffer.js"></script>
+  <script src="./js/bitcoinjs-lib.js"></script>
+  <script src="./js/noble-secp256k1.js"></script>
+  <script src="./js/browserify-cipher.js"></script>
+  <title>Nxstr</title>
+</head>
+<body>
+
+<div class="main">
+  <div class="view">
+    <div class="tab">
+      <h2>Home</h2>
+    </div>
+    <div class="tab">
+      <h2>Contacts</h2>
+      <div class="contact_div">
+        <input id="contact_input" autocomplete="off" type="text" placeholder="User Public Key">
+        <div id="contact_add">
+          <img draggable="false" src="./svg/person_add.svg">
+        </div>
+      </div>
+      <hr style="margin:12px auto 16px auto">
+      <div id="contact_list"></div>
+    </div>
+    <div class="tab">
+      <img class="sk_warn" draggable="false" src="./svg/warning.svg">
+      <h3>Secret Key</h2>
+      <input id="input_sk" autocomplete="off" type="password" placeholder="Your secret key.">
+      <br>
+      <p class="sk_info">Your Secret Key is the key to your account and personal information. It is crucial that you keep it private and secure. Do not share it with anyone, as anyone with access to your Secret Key can control your account and access your information. Store it in a safe place, such as a password manager or a secure offline location. Remember, if you lose your Secret Key, you will lose access to your account permanently.</p>
+      <hr>
+      <h3 hidden id="input_pk_h">Public Key</h2>
+      <div id="input_pk"><div id="input_pk_value"></div><img id="copy_pk" draggable="false" src="./svg/content_copy.svg"></div>
+      <div style="display:flex">
+        <div id="load_key">Load Key</div>
+        <div id="make_key">Generate Key</div>
+      </div>
+      <p class="pk_info" style="display:none">Your Public Key is designed to be shared! This key allows your friends to send you messages securely. Feel free to share your Public Key with anyone you trust, as it does not compromise your account's security. Use it to connect with friends and expand your network within the app. Happy chatting!</p>
+      <br>
+      <div id="btn_logout">Log Out</div>
+    </div>
+    <div class="tab chat">
+      <div class="user">
+        <div id="exit_chat">
+          <img draggable="false" src="./svg/arrow_back.svg">
+        </div>
+      </div>
+      <div id="messages_div"></div>
+      <div class="input" id="message_footer">
+        <textarea id="message_input" placeholder="Write a message..."></textarea>
+        <div id="send_message">
+          <img draggable="false" src="./svg/send.svg">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bar">
+    <div class="content">
+      <div onclick="set_tab(0)" style="display:none">
+        <img draggable="false" src="./svg/home.svg">
+      </div>
+      <div onclick="set_tab(1)">
+        <img draggable="false" src="./svg/patient_list.svg">
+      </div>
+      <div onclick="set_tab(2)">
+        <img draggable="false" src="./svg/key.svg">
+      </div>
+    </div>
+  </div>
+</div>
+<script src="./js/script.js"></script>
+</body>
+</html>
