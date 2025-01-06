@@ -49,7 +49,7 @@ const sign = async (event,sk) => {
   event.sig = await schnorr.sign(event.id,sk);
   return event;
 }
-const encrypt = (sk,pk,text) => {
+const encrypt2 = (sk,pk,text) => {
   const key = nobleSecp256k1.getSharedSecret(sk,"02"+pk,true).substring(2);
   const iv = window.crypto.getRandomValues(new Uint8Array(16));
   const cipher = browserifyCipher.createCipheriv(
@@ -60,7 +60,7 @@ const encrypt = (sk,pk,text) => {
   const emsg = cipher.update(text,"utf8","base64")+cipher.final("base64");
   return emsg+"?iv="+btoa(String.fromCharCode.apply(null,new Uint8Array(iv.buffer)));
 }
-const decrypt = (sk,pk,text) => {
+const decrypt2 = (sk,pk,text) => {
   const [emsg, iv] = text.split("?iv=");
   const key = nobleSecp256k1.getSharedSecret(sk,"02"+pk,true).substring(2);
   const decipher = browserifyCipher.createDecipheriv(
@@ -69,6 +69,23 @@ const decrypt = (sk,pk,text) => {
     h2b(b642h(iv))
   );
   return decipher.update(emsg,"base64")+decipher.final("utf8");
+}
+const encrypt = (sk,pk,text) => {
+  const key = nobleSecp256k1.getSharedSecret(sk,"02"+pk,true).substring(2);
+  const iv = window.crypto.getRandomValues(new Uint8Array(16));
+  const cipher = browserifyCipher.createCipheriv("aes-256-cbc",h2b(key), iv);
+  const encoder = new TextEncoder();
+  const encodedText = encoder.encode(text);
+  const emsg = buffer.Buffer.concat([cipher.update(encodedText),cipher.final()]).toString('base64');
+  return emsg + "?iv="+btoa(String.fromCharCode.apply(null,iv));
+}
+const decrypt = (sk,pk,text) => {
+  const [emsg,iv] = text.split("?iv=");
+  const key = nobleSecp256k1.getSharedSecret(sk,"02"+pk,true).substring(2);
+  const decipher = browserifyCipher.createDecipheriv("aes-256-cbc",h2b(key),h2b(b642h(iv)));
+  const decrypted = buffer.Buffer.concat([decipher.update(buffer.Buffer.from(emsg,"base64")),decipher.final()]);
+  const decoder = new TextDecoder();
+  return decoder.decode(decrypted);
 }
 
 const getPublicFromTags = (tags) => {
