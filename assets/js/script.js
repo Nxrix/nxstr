@@ -284,6 +284,10 @@ const contacts_update = () => {
 
       if (last4s[user.contacts[i]]) {
         message.innerText = last4s[user.contacts[i]][0];
+        const date = document.createElement("div");
+        date.classList.add("date");
+        date.innerText = date2str3(last4s[user.contacts[i]][1]);
+        content_div.appendChild(date);
       }
 
       const delete_div = document.createElement("div");
