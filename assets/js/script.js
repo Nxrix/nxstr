@@ -370,7 +370,7 @@ const req_chat = (pk,n) => {
   const id = bitcoinjs.ECPair.makeRandom().privateKey.toString("hex");
   let filter = { "authors":[pk],"kinds":[4],"#p":[user.pk] };
   let filter2 = { "authors":[user.pk],"kinds":[4],"#p":[pk] };
-  const t = get_times(n);
+  const t = get_times(n-1);
   if (n==0) {
     filter["since"] = t[1];
   } else {
