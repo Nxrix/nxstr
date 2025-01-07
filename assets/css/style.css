@@ -228,7 +228,7 @@ hr {
   overflow: hidden;
   font-size: 14px;
 }
-.contact .content .message {
+.contact .content .message, .contact .content .date {
   color: var(--color3);
   text-overflow: ellipsis;
   overflow: hidden;
