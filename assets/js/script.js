@@ -188,6 +188,7 @@ const load_elements_fix = () => {
   make_key.style.display = "none";
   localStorage.setItem("Nxstr.user",JSON.stringify(user));
   document.querySelector(".pk_info").style.display = "block";
+  profile_settings.style.display = "block";
 }
 
 const disload_elements_fix = () => {
@@ -520,7 +521,6 @@ const connect = () => {
         input_name.value = data.name;
         input_about.value = data.about;
         input_picture.value = data.picture;
-        profile_settings.style.display = "block";
       }
       contacts_update();
 
