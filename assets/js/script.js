@@ -17,11 +17,11 @@ const b642h = (b64) => {
   return r;
 }
 
-const date2str = (n) => {
+const date2str1 = (n) => {
   return new Date(n*1000).toLocaleString();
 }
 
-const date2strt = (n) => {
+const date2str2 = (n) => {
   return new Date(n*1000).toLocaleTimeString("en-GB", {
     hour: "2-digit",
     minute: "2-digit",
@@ -286,7 +286,7 @@ const contacts_update = () => {
         message.innerText = last4s[user.contacts[i]][0];
         const date = document.createElement("div");
         date.classList.add("date");
-        date.innerText = date2str3(last4s[user.contacts[i]][1]);
+        date.innerText = date2str3(last4s[user.contacts[i]][1])+" "+date2str2(last4s[user.contacts[i]][1]);
         content_div.appendChild(date);
       }
 
