@@ -540,7 +540,7 @@ const connect = () => {
       }
       if (sub=="last"||sub=="new") {
         if  (pubkey==user.pk) {
-          if (!last4s[getPublicFromTags(tags)]||created_at>last4s[!last4s[getPublicFromTags(tags)][1]) {
+          if (!last4s[getPublicFromTags(tags)]||created_at>last4s[!last4s[getPublicFromTags(tags)]][1]) {
             last4s[getPublicFromTags(tags)] = [(getPublicFromTags(tags)==user.pk?"":"You: ")+content,created_at];
             contacts_update();
           }
