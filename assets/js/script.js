@@ -395,8 +395,9 @@ const get_last_msg = (pk) => {
 }
 const get_last_msgs = () => {
   if (!socket) return;
-  const filter = { "kinds":[4],"#p":[user.pk],"since":get_times(7)[1] };
-  socket.send(JSON.stringify(["REQ","last",filter]));
+  const filter1 = { "kinds":[4],"#p":[user.pk],"since":get_times(7)[1] };
+  const filter2 = { "authors":[user.pk],"kinds":[4],"since":get_times(7)[1] };
+  socket.send(JSON.stringify(["REQ","last",filter1,filter2]));
   close("last")
 }
 const get_new_msgs = () => {
@@ -529,12 +530,14 @@ const connect = () => {
         content = await decrypt(user.sk,getPublicFromTags(tags),content);
         if (!user.contacts.includes(getPublicFromTags(tags))) {
           user.contacts.push(getPublicFromTags(tags));
+          localStorage.setItem("Nxstr.user",JSON.stringify(user));
           contacts_update();
         }
       } else if (getPublicFromTags(tags)==user.pk) {
         content = await decrypt(user.sk,pubkey,content);
         if (!user.contacts.includes(pubkey)) {
           user.contacts.push(pubkey);
+          localStorage.setItem("Nxstr.user",JSON.stringify(user));
           contacts_update();
         }
       }
