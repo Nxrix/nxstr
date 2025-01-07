@@ -234,6 +234,9 @@ hr {
   overflow: hidden;
   font-size: 14px;
 }
+.contact .content .date {
+  text-align: right;
+}
 
 .contact .delete {
   display: flex;
@@ -331,7 +334,7 @@ hr {
   margin: 16px auto 0 auto;
   font-size: 1em;
   line-height: 1;
-  box-shadow: 0 0 0 1px var(--border);
+  box-shadow: 0 1px 5px var(--shadow),0 0 0 1px var(--border);
   border-radius: 8px;
   transition: transform 0.125s ease;
   cursor: pointer;

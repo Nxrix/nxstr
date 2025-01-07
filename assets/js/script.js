@@ -286,7 +286,7 @@ const contacts_update = () => {
         message.innerText = last4s[user.contacts[i]][0];
         const date = document.createElement("div");
         date.classList.add("date");
-        date.innerText = date2str3(last4s[user.contacts[i]][1])+" "+date2str2(last4s[user.contacts[i]][1]);
+        date.innerText = ((date2str3(get_times(0)[0])==date2str3(last4s[user.contacts[i]][1]))?"":date2str3(last4s[user.contacts[i]][1])+" ")+date2str2(last4s[user.contacts[i]][1]);
         content_div.appendChild(date);
       }
 
