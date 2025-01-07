@@ -282,8 +282,8 @@ const contacts_update = () => {
         picture_img.src = data.picture||"./svg/face.png";
       }
 
-      if (last4s[user.contacts[i]]) {
-        message.innerText = last4s[user.contacts[i]];
+      if (last4s[user.contacts[i]][0]) {
+        message.innerText = last4s[user.contacts[i]][0];
       }
 
       const delete_div = document.createElement("div");
@@ -540,13 +540,13 @@ const connect = () => {
       }
       if (sub=="last"||sub=="new") {
         if  (pubkey==user.pk) {
-          if (!last4s[getPublicFromTags(tags)]||sub=="new") {
-            last4s[getPublicFromTags(tags)] = (getPublicFromTags(tags)==user.pk?"":"You: ")+content;
+          if (!last4s[getPublicFromTags(tags)]||created_at>last4s[!last4s[getPublicFromTags(tags)][1]) {
+            last4s[getPublicFromTags(tags)] = [(getPublicFromTags(tags)==user.pk?"":"You: ")+content,created_at];
             contacts_update();
           }
         } else {
-          if (!last4s[pubkey]||sub=="new") {
-            last4s[pubkey] = content;
+          if (!last4s[pubkey]||created_at>last4s[pubkey][1]) {
+            last4s[pubkey] = [content,created_at];
             contacts_update();
           }
         }
