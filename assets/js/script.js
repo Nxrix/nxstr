@@ -282,7 +282,7 @@ const contacts_update = () => {
         picture_img.src = data.picture||"./svg/face.png";
       }
 
-      if (last4s[user.contacts[i]][0]) {
+      if (last4s[user.contacts[i]]) {
         message.innerText = last4s[user.contacts[i]][0];
       }
 
