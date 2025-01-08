@@ -151,10 +151,10 @@ const set_tab = (n) => {
 
 message_input.addEventListener("input",() => {
   message_footer.style.height = "0";
-  message_footer.style.height = message_input.scrollHeight*1.75 - 8 + "px";
+  message_footer.style.height = message_input.scrollHeight*1.75 + 4 + "px";
 });
 message_footer.style.height = "0";
-message_footer.style.height = message_input.scrollHeight*1.75 - 8 + "px";
+message_footer.style.height = message_input.scrollHeight*1.75 + 4 + "px";
 
 send_message.onclick = () => {
   if (message_input.value.trim().length>0) {
