@@ -268,7 +268,7 @@ const contacts_update = () => {
 
       const content_div = document.createElement("div");
       content_div.classList.add("content");
-      content_div.setAttribute("onclick",`load_chat("${user.contacts[i]}")`);
+      content_div.setAttribute("onclick",`load_chat("${user.contacts[i]}"${(last4s[user.contacts[i]]?","+Math.ceil((get_times(0)[0]-last4s[user.contacts[i]][1])/(60*60*24)):"")})`);
       const name = document.createElement("div");
       name.innerText = user.contacts[i];
       name.classList.add("name");
