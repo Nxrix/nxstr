@@ -444,13 +444,16 @@ hr {
   margin-left: auto;
   border-bottom-right-radius: 0;
 }
+#messages_div .message.right .name {
+  width: calc(min(100%,250px) - 16px);
+}
 #messages_div .message .name {
   font-size: 13px;
   line-height: 1.25;
   margin-bottom: 5px;
   text-overflow: ellipsis;
   overflow: hidden;
-  width: calc(min(100%,250px) - 16px);
+  white-space: no-wrap;
 }
 #messages_div .message .text {
   line-height: 1.25;
