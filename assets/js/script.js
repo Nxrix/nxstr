@@ -520,8 +520,8 @@ const load_k0 = (pk) => {
   if (kind0s[pk]) {
     const data = JSON.parse(kind0s[pk]);
     kind0_view_picture_img.src = data.picture||"./svg/face.png";
-    kind0_view_name = data.name||pk;
-    kind0_view_about = data.about||"";
+    kind0_view_name.innerText = data.name||pk;
+    kind0_view_about.innerText = data.about||"";
   }
   kind0_view.style.display = "flex";
 }
