@@ -231,7 +231,7 @@ make_key.onclick = () => {
     user.sk = input_sk.value = keypair.privateKey.toString("hex");
     user.pk = input_pk_value.innerText = keypair.publicKey.toString("hex").substring(2);
     load_elements_fix();
-  } catch(err) { document.body.innerHTML = err }
+  } catch(err) {}
 }
 
 btn_logout.onclick = () => {
