@@ -4,10 +4,10 @@
   --color: #000;
   --color2: #555;
   --color3: #888;
-  --light: #ffc0d5;
+  --light: #fae;
   --shadow: #0001;
   --border: #ddd;
-  --red: rgb(255, 58, 67);
+  --red: #f34;
 }
 @font-face {
   font-family: "en";
