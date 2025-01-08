@@ -447,7 +447,7 @@ const load_messages = () => {
     var name = document.createElement("div");
     name.classList.add("name");
     name.innerText = (messages[i].pubkey==user.pk?"You":messages[i].pubkey);
-    if (kind0s[user.contacts[messages[i].pubkey]]) {
+    if (kind0s[messages[i].pubkey]) {
       const data = JSON.parse(kind0s[messages[i].pubkey]);
       name.innerText = data.name||(messages[i].pubkey==user.pk?"You":messages[i].pubkey);
     }
