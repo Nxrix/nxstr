@@ -426,7 +426,7 @@ const send_msg = async (pk,text) => {
 }
 
 const load_messages = () => {
-  messages = messages.sort((a,b)=>(a.date>b.date)?1:-1);
+  messages = messages.sort((a,b)=>(a.created_at>b.created_at)?1:-1);
   messages_div.innerHTML = "";
 
   const page_start = document.createElement("div");
@@ -436,12 +436,12 @@ const load_messages = () => {
   messages_div.appendChild(page_start);
 
   for (let i=0;i<messages.length;i++) {
-    const messageDiv = document.createElement("div");
-    messageDiv.classList.add("message");
+    const message = document.createElement("div");
+    message.classList.add("message");
     if (messages[i].pubkey == user.pk) {
-      messageDiv.classList.add("right");
+      message.classList.add("right");
     } else {
-      messageDiv.classList.add("left");
+      message.classList.add("left");
     }
     var userDiv = document.createElement("div");
     userDiv.classList.add("name");
@@ -450,12 +450,16 @@ const load_messages = () => {
       const data = JSON.parse(kind0s[messages[i].pubkey]);
       userDiv.innerText = data.name||(messages[i].pubkey==user.pk?"You":messages[i].pubkey);
     }
-    messageDiv.appendChild(userDiv);
+    message.appendChild(userDiv);
     const textDiv = document.createElement("div");
     textDiv.classList.add("text");
     textDiv.innerText = messages[i].content;
-    messageDiv.appendChild(textDiv);
-    messages_div.appendChild(messageDiv);
+    message.appendChild(textDiv);
+    const time = document.createElement("div");
+    time.classList.add("time");
+    time.innerText = date2str2(messages[i].created_at);
+    message.appendChild(textDiv);
+    messages_div.appendChild(message);
   }
   if (current_chat_page!=0) {
     const page_end = document.createElement("div");
@@ -560,7 +564,7 @@ const connect = () => {
       } else {
         messages.push({
           "content": content,
-          "date": created_at,
+          "created_at": created_at,
           "pubkey": pubkey
         });
         load_messages();
