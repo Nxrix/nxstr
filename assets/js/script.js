@@ -438,27 +438,31 @@ const load_messages = () => {
   for (let i=0;i<messages.length;i++) {
     const message = document.createElement("div");
     message.classList.add("message");
-    if (messages[i].pubkey == user.pk) {
+    if (messages[i].pubkey==user.pk) {
       message.classList.add("right");
     } else {
       message.classList.add("left");
     }
-    var userDiv = document.createElement("div");
-    userDiv.classList.add("name");
-    userDiv.innerText = (messages[i].pubkey==user.pk?"You":messages[i].pubkey);
+
+    var name = document.createElement("div");
+    name.classList.add("name");
+    name.innerText = (messages[i].pubkey==user.pk?"You":messages[i].pubkey);
     if (kind0s[user.contacts[messages[i].pubkey]]) {
       const data = JSON.parse(kind0s[messages[i].pubkey]);
-      userDiv.innerText = data.name||(messages[i].pubkey==user.pk?"You":messages[i].pubkey);
+      name.innerText = data.name||(messages[i].pubkey==user.pk?"You":messages[i].pubkey);
     }
-    message.appendChild(userDiv);
-    const textDiv = document.createElement("div");
-    textDiv.classList.add("text");
-    textDiv.innerText = messages[i].content;
-    message.appendChild(textDiv);
+    message.appendChild(name);
+
+    const text = document.createElement("div");
+    text.classList.add("text");
+    text.innerText = messages[i].content;
+    message.appendChild(text);
+
     const time = document.createElement("div");
     time.classList.add("time");
     time.innerText = date2str2(messages[i].created_at);
-    message.appendChild(textDiv);
+    message.appendChild(time);
+
     messages_div.appendChild(message);
   }
   if (current_chat_page!=0) {
