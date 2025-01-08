@@ -394,9 +394,17 @@ const req_chat = (pk,n) => {
 
 const get_last_msg = (pk) => {
   if (!socket) return;
-  const filter = { "authors":[user.pk],"kinds":[4],"limit":1,"#p":[pk] };
-  socket.send(JSON.stringify(["REQ","last",filter]));
+  const filter1 = { "authors":[user.pk],"kinds":[4],"limit":1,"#p":[pk] };
+  const filter2 = { "authors":[pk],"kinds":[4],"limit":1,"#p":[user.pk] };
+  socket.send(JSON.stringify(["REQ","last",filter1,filter2]));
   close("last");
+}
+const get_prev_msg = (pk,t) => {
+  if (!socket) return;
+  const filter1 = { "authors":[user.pk],"kinds":[4],"limit":1,"#p":[pk],"until":get_times(t)[0] };
+  const filter2 = { "authors":[pk],"kinds":[4],"limit":1,"#p":[user.pk],"until":get_times(t)[0] };
+  socket.send(JSON.stringify(["REQ","prev",filter1,filter2]));
+  close("prev");
 }
 const get_last_msgs = () => {
   if (!socket) return;
@@ -431,7 +439,8 @@ const load_messages = () => {
 
   const page_start = document.createElement("div");
   page_start.classList.add("page");
-  page_start.setAttribute("onclick",`load_chat("${current_chat}",${current_chat_page+1})`);
+  //page_start.setAttribute("onclick",`load_chat("${current_chat}",${current_chat_page+1})`);
+  page_start.setAttribute("onclick",`get_prev_msg("${current_chat}",${current_chat_page+1})`);
   page_start.innerText = "Previous Day";
   messages_div.appendChild(page_start);
 
@@ -486,7 +495,8 @@ const load_chat = (pk,n=0) => {
 
   const page_start = document.createElement("div");
   page_start.classList.add("page");
-  page_start.setAttribute("onclick",`load_chat("${current_chat}",${current_chat_page+1})`);
+  //page_start.setAttribute("onclick",`load_chat("${current_chat}",${current_chat_page+1})`);
+  page_start.setAttribute("onclick",`get_prev_msg("${current_chat}",${current_chat_page+1})`);
   page_start.innerText = "Previous Day";
   messages_div.appendChild(page_start);
   
@@ -565,6 +575,11 @@ const connect = () => {
             contacts_update();
           }
         }
+      } else if (sub=="prev") {
+        load_chat(
+          current_chat,
+          Math.ceil((get_times(0)[0]-created_at)/(60*60*24))
+        );
       } else {
         messages.push({
           "content": content,
