@@ -179,6 +179,7 @@ let socket;
 let current_chat = "";
 let current_id = "";
 let current_chat_page = 0;
+let current_prev = true;
 connected = false;
 
 const load_elements_fix = () => {
@@ -401,6 +402,7 @@ const get_last_msg = (pk) => {
 }
 const get_prev_msg = (pk,t) => {
   if (!socket) return;
+  loaded_prev = false;
   const filter1 = { "authors":[user.pk],"kinds":[4],"limit":1,"#p":[pk],"until":get_times(t)[0] };
   const filter2 = { "authors":[pk],"kinds":[4],"limit":1,"#p":[user.pk],"until":get_times(t)[0] };
   socket.send(JSON.stringify(["REQ","prev",filter1,filter2]));
@@ -576,10 +578,10 @@ const connect = () => {
           }
         }
       } else if (sub=="prev") {
-        load_chat(
-          current_chat,
-          Math.ceil((get_times(0)[0]-created_at)/(60*60*24))
-        );
+        if (loaded_prev==false) {
+          load_chat(current_chat,Math.ceil((get_times(0)[0]-created_at)/(60*60*24)));
+          loaded_prev=true;
+        }
       } else {
         messages.push({
           "content": content,
@@ -594,13 +596,11 @@ const connect = () => {
   });
 
   socket.addEventListener("close", async (e) => {
-    connected = false;
     console.log("Disconnected.");
     document.body.innerHTML = "Disconnected.";
   });
 
   socket.addEventListener("open", async (e) => {
-    connected = true;
     console.log("Connected.");
     if (!user.contacts[user.pk]) {
       reqk0(user.pk);
