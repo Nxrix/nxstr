@@ -430,6 +430,7 @@ hr {
 #messages_div .message {
   background-color: #eee;
   width: fit-content;
+  min-width: 75px;
   max-width: 250px;
   padding: 10px;
   margin: 10px;
@@ -449,6 +450,7 @@ hr {
   margin-bottom: 5px;
   text-overflow: ellipsis;
   overflow: hidden;
+  width: calc(min(100%,250px) - 16px);
 }
 #messages_div .message .text {
   line-height: 1.25;

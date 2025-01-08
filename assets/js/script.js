@@ -586,7 +586,8 @@ const connect = () => {
         messages.push({
           "content": content,
           "created_at": created_at,
-          "pubkey": pubkey
+          "pubkey": pubkey,
+          "id": id
         });
         load_messages();
         if (pubkey==user.pk) messages_div.scrollTop = messages_div.scrollHeight;
