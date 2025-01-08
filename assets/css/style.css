@@ -457,7 +457,8 @@ hr {
   color: var(--color3);
   text-align: right;
   font-size: 13px;
-  margin-bottom: -4px;
+  margin-top: 4px;
+  margin-bottom: -3px;
 }
 
 .view .tab:nth-child(4) .input {
