@@ -440,7 +440,7 @@ const load_messages = () => {
   const page_start = document.createElement("div");
   page_start.classList.add("page");
   //page_start.setAttribute("onclick",`load_chat("${current_chat}",${current_chat_page+1})`);
-  page_start.setAttribute("onclick",`get_prev_msg("${current_chat}",${current_chat_page+1})`);
+  page_start.setAttribute("onclick",`get_prev_msg("${current_chat}",${current_chat_page})`);
   page_start.innerText = "Previous Day";
   messages_div.appendChild(page_start);
 
@@ -496,7 +496,7 @@ const load_chat = (pk,n=0) => {
   const page_start = document.createElement("div");
   page_start.classList.add("page");
   //page_start.setAttribute("onclick",`load_chat("${current_chat}",${current_chat_page+1})`);
-  page_start.setAttribute("onclick",`get_prev_msg("${current_chat}",${current_chat_page+1})`);
+  page_start.setAttribute("onclick",`get_prev_msg("${current_chat}",${current_chat_page})`);
   page_start.innerText = "Previous Day";
   messages_div.appendChild(page_start);
   
