@@ -198,7 +198,7 @@ hr {
 }
 #kind0_view_name {
   height: 10%;
-  font-size: 4vmin;
+  font-size: min(4vmin,20px);
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
