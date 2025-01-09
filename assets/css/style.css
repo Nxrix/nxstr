@@ -161,6 +161,69 @@ hr {
 
 /*-- --*/
 
+#kind0_view {
+  background-color: var(--shadow);
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.kind0_box {
+  background: var(--background);
+  display: flex;
+  flex-direction: column;
+  width: 70vmin;
+  height: 70vmin;
+  margin-bottom: 72px;
+  padding: 5%;
+  border-radius: 5%;
+  box-shadow: 0 0 0 1px var(--border);
+}
+#kind0_view_picture {
+  width: fit-content;
+  height: 50%;
+  margin: 0 auto;
+}
+#kind0_view_picture_img {
+  height: 80%;
+  box-shadow: 0 0 0 1px var(--border);
+  margin: 10% 0;
+  border-radius: 100%;
+}
+#kind0_view_name {
+  height: 10%;
+  font-size: 5vmin;
+  text-align: center;
+}
+#kind0_view_about {
+  color: var(--color3);
+  width: 92%;
+  height: 25%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 4%;
+  text-align: center;
+  font-size: 3.5vmin;
+}
+#kind0_view_hide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 15%;
+  box-shadow: 0 0 0 1px var(--border);
+  border-radius: 2vmin;
+  transition: transform 0.125s ease;
+  cursor: pointer;
+}
+#kind0_view_hide:active {
+  transform: scale(0.875);
+}
+
 /* Tab 1 */
 
 /* Tab 2 */
@@ -211,6 +274,7 @@ hr {
   height: 48px;
   border-radius: 24px;
   overflow: hidden;
+  cursor: pointer;
 }
 .contact .picture img {
   width: 100%;

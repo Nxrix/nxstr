@@ -265,6 +265,7 @@ const contacts_update = () => {
       const picture_img = document.createElement("img");
       picture_img.src = "./svg/face.png";
       picture_div.classList.add("picture");
+      picture_div.setAttribute("onclick",`load_k0("${user.contacts[i]}")`);
       picture_div.appendChild(picture_img);
 
       const content_div = document.createElement("div");

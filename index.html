@@ -9,7 +9,7 @@
   <meta http-equiv="pragma" content="no-cache">
 
   <base href="./assets/">
-  <link rel="stylesheet" href="./css/style.css?v=21">
+  <link rel="stylesheet" href="./css/style.css?v=22">
   <script src="./js/buffer.js"></script>
   <script src="./js/bitcoinjs-lib.js"></script>
   <script src="./js/noble-secp256k1.js"></script>
@@ -75,13 +75,11 @@
       </div>
     </div>
     <div id="kind0_view" style="display:none">
-      <div id="kind0_view_picture">
-        <img draggable="false" id="kind0_view_picture_img">
-      </div>
-      <div id="kind0_view_name"></div>
-      <div id="kind0_view_about"></div>
-      <div id="kind0_view_hide" onclick="kind0_view.style.display='none'">
-        <img draggable="false" src="./svg/close.svg">
+      <div class="kind0_box">
+        <div id="kind0_view_picture"><img draggable="false" id="kind0_view_picture_img"></div>
+        <div id="kind0_view_name"></div>
+        <div id="kind0_view_about"></div>
+        <div id="kind0_view_hide" onclick="kind0_view.style.display='none'">Close</div>
       </div>
     </div>
   </div>
@@ -100,7 +98,7 @@
   </div>
 </div>
 
-<script src="./js/script.js?v=25"></script>
+<script src="./js/script.js?v=26"></script>
 
 </body>
 </html>
