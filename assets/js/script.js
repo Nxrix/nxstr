@@ -467,6 +467,7 @@ const load_messages = () => {
 
     const text = document.createElement("div");
     text.classList.add("text");
+    text.classList.add("selectable");
     text.innerText = messages[i].content;
     message.appendChild(text);
 

@@ -32,7 +32,7 @@
   unicode-bidi: plaintext !important;
   -webkit-tap-highlight-color: transparent;
 }
-*:not(input):not(textarea):not(#input_pk_value) {
+*:not(input):not(textarea):not(#input_pk_value):not(.selectable) {
   -webkit-touch-callout: none;
     -webkit-user-select: none;
      -khtml-user-select: none;
