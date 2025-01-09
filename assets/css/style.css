@@ -40,6 +40,9 @@
         -ms-user-select: none;
             user-select: none;
 }
+.selectable {
+  user-select: text;
+}
 ::-webkit-scrollbar {
   width: 4px;
   height: 4px;
