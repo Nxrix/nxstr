@@ -196,10 +196,11 @@ hr {
 }
 #kind0_view_name {
   height: 10%;
-  font-size: 5vmin;
+  font-size: 4vmin;
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
+  user-select: all;
 }
 #kind0_view_about {
   color: var(--color3);
