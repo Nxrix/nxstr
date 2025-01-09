@@ -179,8 +179,8 @@ hr {
   width: 70vmin;
   height: 70vmin;
   margin-bottom: 72px;
-  padding: 5%;
-  border-radius: 5%;
+  padding: 32px;
+  border-radius: 4%;
   box-shadow: 0 0 0 1px var(--border);
 }
 #kind0_view_picture {
@@ -207,7 +207,7 @@ hr {
   overflow-y: auto;
   margin: 4%;
   text-align: center;
-  font-size: 3.5vmin;
+  font-size: 3vmin;
 }
 #kind0_view_hide {
   display: flex;
