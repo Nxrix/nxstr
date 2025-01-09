@@ -178,6 +178,8 @@ hr {
   flex-direction: column;
   width: 70vmin;
   height: 70vmin;
+  max-width: 400px;
+  max-height: 400px;
   margin-bottom: 72px;
   padding: 24px;
   border-radius: 4%;
