@@ -179,7 +179,7 @@ hr {
   width: 70vmin;
   height: 70vmin;
   margin-bottom: 72px;
-  padding: 32px;
+  padding: 24px;
   border-radius: 4%;
   box-shadow: 0 0 0 1px var(--border);
 }
@@ -198,6 +198,8 @@ hr {
   height: 10%;
   font-size: 5vmin;
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 #kind0_view_about {
   color: var(--color3);

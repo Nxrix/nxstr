@@ -523,6 +523,10 @@ const load_k0 = (pk) => {
     kind0_view_picture_img.src = data.picture||"./svg/face.png";
     kind0_view_name.innerText = data.name||pk;
     kind0_view_about.innerText = data.about||"";
+  } else {
+    kind0_view_picture_img.src = "./svg/face.png";
+    kind0_view_name.innerText = pk;
+    kind0_view_about.innerText = "";
   }
   kind0_view.style.display = "flex";
 }
