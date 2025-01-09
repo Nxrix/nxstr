@@ -370,6 +370,7 @@ const setk0 = async (name="",about="",picture="") => {
   };
   const signed = await sign(event,user.sk);
   socket.send(JSON.stringify(["EVENT",signed]));
+  reqk0(user.pk);
 }
 
 const req_chat = (pk,n) => {
