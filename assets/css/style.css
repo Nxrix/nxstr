@@ -215,7 +215,7 @@ hr {
   overflow-y: auto;
   margin: 4%;
   text-align: center;
-  font-size: 3vmin;
+  font-size: min(3vmin,15px);
 }
 #kind0_view_hide {
   display: flex;
