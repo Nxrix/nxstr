@@ -251,7 +251,7 @@ hr {
   padding: 16px;
   font-size: 1em;
   line-height: 1;
-  box-shadow: inset 0 1px 5px var(--shadow), 0 0 0 1px var(--border);
+  box-shadow: 0 0 0 1px var(--border);
   border-radius: 8px;
 }
 
@@ -261,7 +261,7 @@ hr {
   height: calc(1em + 32px);
   justify-content: center;
   align-items: center;
-  box-shadow: 0 1px 5px var(--shadow), 0 0 0 1px var(--border);
+  box-shadow: 0 0 0 1px var(--border);
   border-radius: 8px;
   transition: transform 0.125s ease;
   cursor: pointer;
@@ -342,7 +342,7 @@ hr {
   font-size: 1em;
   line-height: 1;
   border-radius: 8px;
-  box-shadow: inset 0 1px 5px var(--shadow), 0 0 0 1px var(--border);
+  box-shadow: 0 0 0 1px var(--border);
 }
 
 .sk_info , .pk_info {
@@ -383,7 +383,7 @@ hr {
   padding:8px;
   margin:5px;
   border-radius: 8px;
-  box-shadow: 0 1px 5px var(--shadow), 0 0 0 1px var(--border);
+  box-shadow: 0 0 0 1px var(--border);
   transition: transform 0.125s ease;
   cursor: pointer;
 }
@@ -402,7 +402,7 @@ hr {
   margin: 16px auto 0 auto;
   font-size: 1em;
   line-height: 1;
-  box-shadow: 0 1px 5px var(--shadow),0 0 0 1px var(--border);
+  box-shadow: 0 0 0 1px var(--border);
   border-radius: 8px;
   transition: transform 0.125s ease;
   cursor: pointer;
@@ -461,7 +461,7 @@ hr {
   padding: 8px;
   margin: 12px;
   border-radius: 8px;
-  box-shadow: 0 1px 5px var(--shadow),0 0 0 1px var(--border);
+  box-shadow: 0 0 0 1px var(--border);
 }
 #exit_chat:active {
   transform: scale(0.875);
@@ -484,7 +484,7 @@ hr {
   font-size: 12px;
   line-height: 1;
   border-radius: 16px;
-  box-shadow: 0 1px 5px var(--shadow), 0 0 0 1px var(--border);
+  box-shadow: 0 0 0 1px var(--border);
   transition: transform 0.125s ease;
   cursor: pointer;
 }
@@ -558,7 +558,7 @@ hr {
   width: 100%;
   resize: none;
   font-size: 1em;
-  box-shadow: inset 0 1px 5px var(--shadow), 0 0 0 1px var(--border);
+  box-shadow: 0 0 0 1px var(--border);
   border-radius: 8px;
   padding: 10px;
   margin: 4px;
@@ -577,7 +577,7 @@ hr {
   padding: 4px;
   margin: 4px;
   border-radius: 8px;
-  box-shadow: 0 1px 5px var(--shadow), 0 0 0 1px var(--border);
+  box-shadow: 0 0 0 1px var(--border);
 }
 #send_message:active {
   transform: scale(0.875);
