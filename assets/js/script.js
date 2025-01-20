@@ -549,6 +549,9 @@ const connect = () => {
 
   socket.addEventListener("message", async (message) => {
     const [type,sub,event] = JSON.parse(message.data);
+    if (type=="EOSE"&&sub=="prev") {
+      load_chat(current_chat,Math.ceil((get_times(0)[0]-loaded_prev)/(60*60*24)));
+    }
     if (!event) return;
     let { kind, content , tags , pubkey , created_at , id } = event || {};
 
@@ -599,9 +602,6 @@ const connect = () => {
       } else if (sub=="prev") {
         if (created_at>loaded_prev) {
           loaded_prev=created_at;
-        }
-        if (type=="EOSE") {
-          load_chat(current_chat,Math.ceil((get_times(0)[0]-loaded_prev)/(60*60*24)));
         }
       } else {
         messages.push({
