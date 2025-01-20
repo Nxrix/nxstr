@@ -549,7 +549,7 @@ const connect = () => {
 
   socket.addEventListener("message", async (message) => {
     const [type,sub,event] = JSON.parse(message.data);
-    if (type=="EOSE"&&sub=="prev") {
+    if (type=="EOSE"&&sub=="prev"&&loaded_prev!=0) {
       load_chat(current_chat,Math.ceil((get_times(0)[0]-loaded_prev)/(60*60*24)));
     }
     if (!event) return;
