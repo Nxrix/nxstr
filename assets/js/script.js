@@ -598,8 +598,10 @@ const connect = () => {
         }
       } else if (sub=="prev") {
         if (created_at>loaded_prev) {
-          load_chat(current_chat,Math.ceil((get_times(0)[0]-created_at)/(60*60*24)));
           loaded_prev=created_at;
+        }
+        if (type=="EOSE") {
+          load_chat(current_chat,Math.ceil((get_times(0)[0]-loaded_prev)/(60*60*24)));
         }
       } else {
         messages.push({
