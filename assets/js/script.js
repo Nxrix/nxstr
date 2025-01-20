@@ -406,7 +406,7 @@ const get_last_msg = (pk) => {
 }
 const get_prev_msg = (pk,t) => {
   if (!socket) return;
-  loaded_prev = false;
+  loaded_prev = 0;
   const filter1 = { "authors":[user.pk],"kinds":[4],"limit":1,"#p":[pk],"until":get_times(t)[0] };
   const filter2 = { "authors":[pk],"kinds":[4],"limit":1,"#p":[user.pk],"until":get_times(t)[0] };
   socket.send(JSON.stringify(["REQ","prev",filter1,filter2]));
@@ -597,9 +597,9 @@ const connect = () => {
           }
         }
       } else if (sub=="prev") {
-        if (loaded_prev==false) {
+        if (created_at>loaded_prev) {
           load_chat(current_chat,Math.ceil((get_times(0)[0]-created_at)/(60*60*24)));
-          loaded_prev=true;
+          loaded_prev=created_at;
         }
       } else {
         messages.push({
