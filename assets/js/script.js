@@ -112,11 +112,10 @@ window.resize();
 window.addEventListener("resize",window.resize);
 
 const fallback_copy_text = (text) => {
-  var textArea = document.createElement("textarea");
+  const textArea = document.createElement("textarea");
   textArea.value = text;
   textArea.focus();
   textArea.select();
-
   try {
     document.execCommand("copy");
   } catch(err) {}
@@ -445,7 +444,10 @@ const send_msg = async (pk,text) => {
 const delete_msg = async (id) => {
   if (confirm("Are you sure you want to delete this?")) {
     if (!socket) return;
-    const encrypted = encrypt(user.sk,pk,text);
+    const index = messages.findIndex(message=>message.id==id);
+    if (index!==-1) {
+        messages.splice(index,1);
+    }
     const event = {
       "content": "",
       "created_at": Math.floor(Date.now()/1000),
@@ -478,7 +480,7 @@ const load_messages = () => {
       message.classList.add("left");
     }
 
-    var name = document.createElement("div");
+    const name = document.createElement("div");
     name.classList.add("name");
     name.innerText = (messages[i].pubkey==user.pk?"You":messages[i].pubkey);
     if (kind0s[messages[i].pubkey]) {
