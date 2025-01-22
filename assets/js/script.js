@@ -304,10 +304,10 @@ const contacts_update = () => {
       move_div.classList.add("move");
       const move_up_div = document.createElement("div");
       const move_down_div = document.createElement("div");
-      move_up_div.innerText = "↑";
-      move_down_div.innerText = "↓";
-      move_up_div.setAttribute("onclick",`move_contact_up("${i}")`);
-      move_down_div.setAttribute("onclick",`move_contact_down("${i}")`);
+      move_up_div.innerText = "▲";
+      move_down_div.innerText = "▼";
+      move_up_div.setAttribute("onclick",`move_contact_up(${i})`);
+      move_down_div.setAttribute("onclick",`move_contact_down(${i})`);
       move_div.appendChild(move_up_div);
       move_div.appendChild(move_down_div);
 
