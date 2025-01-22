@@ -330,6 +330,7 @@ contact_add.onclick = () => {
     if (!user.contacts) {
       user.contacts = [contact_input.value];
       localStorage.setItem("Nxstr.user",JSON.stringify(user));
+      contact_input.value = "";
       const id = reqk0(contact_input.value);
       close(id);
       contacts_update();
@@ -337,6 +338,7 @@ contact_add.onclick = () => {
       if (!user.contacts.includes(contact_input.value)) {
         user.contacts.push(contact_input.value);
         localStorage.setItem("Nxstr.user",JSON.stringify(user));
+        contact_input.value = "";
         const id = reqk0(contact_input.value);
         close(id);
         contacts_update();
