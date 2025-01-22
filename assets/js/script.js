@@ -300,9 +300,25 @@ const contacts_update = () => {
       delete_div.setAttribute("onclick",`delete_contact("${user.contacts[i]}")`);
       delete_div.appendChild(delete_img);
 
+      const move_div = document.createElement("div");
+      move_div.classList.add("move");
+      const move_up_div = document.createElement("div");
+      const move_down_div = document.createElement("div");
+      move_up_div.innerText = "↑";
+      move_down_div.innerText = "↓";
+      move_up_div.setAttribute("onclick",`move_contact_up("${i}")`);
+      move_down_div.setAttribute("onclick",`move_contact_down("${i}")`);
+      move_div.appendChild(move_up_div);
+      move_div.appendChild(move_down_div);
+
+      const btns_div = document.createElement("div");
+      btns_div.classList.add("btns");
+      btns_div.appendChild(delete_div);
+      btns_div.appendChild(move_div);
+
       contact.appendChild(picture_div);
       contact.appendChild(content_div);
-      contact.appendChild(delete_div);
+      contact.appendChild(btns_div);
       contact_list.appendChild(contact);
       contact_list.appendChild(document.createElement("br"));
     }
@@ -315,6 +331,24 @@ const delete_contact = (pk) => {
     if (i!==-1) {
       user.contacts.splice(i,1);
     }
+    localStorage.setItem("Nxstr.user",JSON.stringify(user));
+    contacts_update();
+  }
+}
+const move_contact_up = (index) => {
+  if (index>0) {
+    const item = user.contacts[index];
+    user.contacts.splice(index,1);
+    user.contacts.splice(index-1,0,item);
+    localStorage.setItem("Nxstr.user",JSON.stringify(user));
+    contacts_update();
+  }
+}
+const move_contact_down = (index) => {
+  if (index<user.contacts.length-1) {
+    const item = user.contacts[index];
+    user.contacts.splice(index,1);
+    user.contacts.splice(index+1,0,item);
     localStorage.setItem("Nxstr.user",JSON.stringify(user));
     contacts_update();
   }
