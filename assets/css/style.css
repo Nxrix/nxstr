@@ -287,7 +287,6 @@ hr {
 .contact .picture img {
   width: 100%;
   height: 100%;
-  image-rendering: pixelated;
 }
 
 .contact .content {
