@@ -444,10 +444,6 @@ const send_msg = async (pk,text) => {
 const delete_msg = async (id) => {
   if (confirm("Are you sure you want to delete this?")) {
     if (!socket) return;
-    const index = messages.findIndex(message=>message.id==id);
-    if (index!==-1) {
-        messages.splice(index,1);
-    }
     const event = {
       "content": "",
       "created_at": Math.floor(Date.now()/1000),
@@ -457,6 +453,11 @@ const delete_msg = async (id) => {
     };
     const signed = await sign(event,user.sk);
     socket.send(JSON.stringify(["EVENT",signed]));
+    const index = messages.findIndex(message=>message.id==id);
+    if (index!==-1) {
+        messages.splice(index,1);
+    }
+    load_messages();
   }
 }
 
