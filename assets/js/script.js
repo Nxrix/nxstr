@@ -429,6 +429,7 @@ const get_new_msgs = () => {
 }
 
 const send_msg = async (pk,text) => {
+  if (!socket) return;
   const encrypted = encrypt(user.sk,pk,text);
   const event = {
     "content": encrypted,
@@ -439,6 +440,22 @@ const send_msg = async (pk,text) => {
   };
   const signed = await sign(event,user.sk);
   socket.send(JSON.stringify(["EVENT",signed]));
+}
+
+const delete_msg = async (id) => {
+  if (confirm("Are you sure you want to delete this?")) {
+    if (!socket) return;
+    const encrypted = encrypt(user.sk,pk,text);
+    const event = {
+      "content": "",
+      "created_at": Math.floor(Date.now()/1000),
+      "kind": 5,
+      "tags": [["e",id]],
+      "pubkey": user.pk
+    };
+    const signed = await sign(event,user.sk);
+    socket.send(JSON.stringify(["EVENT",signed]));
+  }
 }
 
 const load_messages = () => {
@@ -469,6 +486,17 @@ const load_messages = () => {
       name.innerText = data.name||(messages[i].pubkey==user.pk?"You":messages[i].pubkey);
     }
     message.appendChild(name);
+
+    if (messages[i].pubkey==user.pk) {
+      const delete_div = document.createElement("div");
+      delete_div.classList.add("delete");
+      delete_div.setAttribute("onclick",`delete_msg("${messages[i].id}")`);
+      const delete_img = document.createElement("img");
+      delete_img.setAttribute("draggable","false");
+      delete_img.src = "./svg/close.svg";
+      delete_div.appendChild(delete_img);
+      message.appendChild(delete_div);
+    }
 
     const text = document.createElement("div");
     text.classList.add("text");

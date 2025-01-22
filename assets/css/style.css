@@ -501,6 +501,7 @@ hr {
 }
 #messages_div .message {
   background-color: #eee;
+  position: relative;
   width: fit-content;
   min-width: 75px;
   max-width: 250px;
@@ -526,6 +527,26 @@ hr {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: no-wrap;
+}
+#messages_div .message .delete {
+  background-color: var(--background);
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  margin: 6px;
+  padding: 2px;
+  border-radius: 5px;
+  box-shadow: 0 0 0 1px var(--border);
+  transition: transform 0.125s ease;
+  cursor: pointer;
+}
+#messages_div .message .delete:active {
+  transform: scale(0.875);
+}
+#messages_div .message .delete img {
+  width: 100%;
 }
 #messages_div .message .text {
   line-height: 1.25;
