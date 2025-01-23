@@ -649,6 +649,7 @@ const connect = () => {
         if (!user.contacts.includes(getPublicFromTags(tags))) {
           user.contacts.push(getPublicFromTags(tags));
           localStorage.setItem("Nxstr.user",JSON.stringify(user));
+          reqk0(pubkey);
           contacts_update();
         }
       } else if (getPublicFromTags(tags)==user.pk) {
@@ -656,6 +657,7 @@ const connect = () => {
         if (!user.contacts.includes(pubkey)) {
           user.contacts.push(pubkey);
           localStorage.setItem("Nxstr.user",JSON.stringify(user));
+          reqk0(pubkey);
           contacts_update();
         }
       }
