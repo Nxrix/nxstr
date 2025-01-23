@@ -189,6 +189,8 @@ hr {
   box-shadow: 0 0 0 1px var(--border);
 }
 #kind0_view_picture {
+  display: flex;
+  align-items: center;
   width: fit-content;
   height: 50%;
   margin: 0 auto;
@@ -196,7 +198,6 @@ hr {
 #kind0_view_picture_img {
   height: 80%;
   box-shadow: 0 0 0 1px var(--border);
-  margin: 10% 0;
   border-radius: 100%;
 }
 #kind0_view_name {
