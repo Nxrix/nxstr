@@ -597,13 +597,13 @@ const load_k0 = (pk) => {
   } else {
     kind0_view_picture_img.src = "./svg/face.png";
     kind0_view_name.innerText = pk;
-    copy_btn = document.createElement("img");
-    copy_btn.setAttribute("draggable","false");
-    copy_btn.src = "./svg/content_copy.svg";
-    copy_btn.src.setAttribute("onclick",`copy_text("${pk}")`);
-    kind0_view_name.appendChild(copy_btn);
     kind0_view_about.innerText = "";
   }
+  copy_btn = document.createElement("img");
+  copy_btn.setAttribute("draggable","false");
+  copy_btn.src = "./svg/content_copy.svg";
+  copy_btn.src.setAttribute("onclick",`copy_text("${pk}")`);
+  kind0_view_name.appendChild(copy_btn);
   kind0_view.style.display = "flex";
 }
 
