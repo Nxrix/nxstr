@@ -602,7 +602,7 @@ const load_k0 = (pk) => {
   copy_btn = document.createElement("img");
   copy_btn.setAttribute("draggable","false");
   copy_btn.src = "./svg/content_copy.svg";
-  copy_btn.src.setAttribute("onclick",`copy_text("${pk}")`);
+  copy_btn.setAttribute("onclick",`copy_text("${pk}")`);
   kind0_view_name.appendChild(copy_btn);
   kind0_view.style.display = "flex";
 }
