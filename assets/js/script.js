@@ -592,11 +592,11 @@ const load_k0 = (pk) => {
   if (kind0s[pk]) {
     const data = JSON.parse(kind0s[pk]);
     kind0_view_picture_img.src = data.picture||"./svg/face.png";
-    kind0_view_name.innerText = data.name||pk;
+    kind0_view_name.innerText = data.name||(pk.substr(0,4)+".."+pk.substr(-4));
     kind0_view_about.innerText = data.about||"";
   } else {
     kind0_view_picture_img.src = "./svg/face.png";
-    kind0_view_name.innerText = pk;
+    kind0_view_name.innerText = pk.substr(0,4)+".."+pk.substr(-4);
     kind0_view_about.innerText = "";
   }
   copy_btn = document.createElement("img");
