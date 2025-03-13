@@ -698,8 +698,10 @@ const connect = () => {
 
   socket.addEventListener("open", async (e) => {
     console.log("Connected.");
-    if (!user.contacts[user.pk]) {
-      reqk0(user.pk);
+    if (user.pk) {
+      if (!user.contacts[user.pk]) {
+        reqk0(user.pk);
+      }
     }
     for (let i=0;i<user.contacts.length;i++) {
       reqk0(user.contacts[i]);
@@ -711,7 +713,6 @@ const connect = () => {
 }
 
 if (user!={}) {
-  connect();
   contacts_update();
   try {
     const keypair = bitcoinjs.ECPair.fromPrivateKey(buffer.Buffer.from(user.sk,"hex"));
@@ -720,4 +721,5 @@ if (user!={}) {
     load_elements_fix();
   } catch(err) {}
 }
+connect();
 set_tab(1);
